@@ -16,3 +16,5 @@ coverage/
 .idea/
 .vscode/
 *.iml
+.claude/
+CLAUDIA.md
