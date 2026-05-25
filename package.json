@@ -1,0 +1,41 @@
+{
+  "name": "@tikeyc/generate-api",
+  "version": "1.0.0",
+  "description": "OpenAPI/Swagger 文档代码生成工具，自动生成 TypeScript API 请求层代码",
+  "type": "module",
+  "main": "generate-api/generate-api.js",
+  "bin": {
+    "generate-api": "./generate-api/generate-api.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openapi",
+    "swagger",
+    "typescript",
+    "api",
+    "codegen",
+    "generator"
+  ],
+  "author": "tikeyc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tikeyc/generate-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tikeyc/generate-api/issues"
+  },
+  "homepage": "https://github.com/tikeyc/generate-api#readme",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "generate-api/"
+  ]
+}

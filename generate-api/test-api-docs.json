@@ -1,0 +1,622 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://10.233.74.127",
+            "description": "Generated server url"
+        }
+    ],
+    "tags": [
+        {
+            "name": "消息通知服务",
+            "description": "消息通知API"
+        }
+    ],
+    "paths": {
+        "/msg/internal/readMessage": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 标为已读",
+                "description": "标为已读",
+                "operationId": "readMessage",
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/readAll": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 全部标为已读",
+                "description": "全部标为已读",
+                "operationId": "readAll",
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/personal": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 个人消息",
+                "description": "个人消息",
+                "operationId": "personal",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MsgAddRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponsePageInternalMessageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/getSystemMessage": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 系统消息",
+                "description": "系统消息",
+                "operationId": "getSystemMessage",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InternalMessageRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponsePageInternalMessageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/delete": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 删除消息",
+                "description": "删除消息",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/deleteUserMsg": {
+            "post": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 删除消息",
+                "description": "删除消息",
+                "operationId": "deleteUserMsg",
+                "parameters": [
+                    {
+                        "name": "messageSysCode",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/msg/internal/getMessageCount": {
+            "get": {
+                "tags": [
+                    "消息通知服务"
+                ],
+                "summary": "True    [ v0.0.1 ] 获取最新未读消息数量",
+                "description": "获取最新未读消息数量",
+                "operationId": "getMessageCount",
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseObject"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseInternalMessageCountResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ResponseObject": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    }
+                }
+            },
+            "ResponseBoolean": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "MsgAddRequest": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Order"
+                        }
+                    },
+                    "msgCode": {
+                        "type": "string",
+                        "description": "消息编码"
+                    },
+                    "messageRecipient": {
+                        "type": "string",
+                        "description": "消息接受者编码"
+                    },
+                    "messageSender": {
+                        "type": "string",
+                        "description": "消息发送者编码"
+                    },
+                    "messageSysCode": {
+                        "type": "string",
+                        "description": "消息所属系统"
+                    },
+                    "messageRead": {
+                        "type": "string",
+                        "description": "消息是否已读，0未读，1已读"
+                    },
+                    "endIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "order": {
+                        "type": "array",
+                        "writeOnly": true,
+                        "items": {
+                            "$ref": "#/components/schemas/Order"
+                        }
+                    },
+                    "startPosition": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "endPosition": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "startIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "startEnd": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                },
+                "description": "消息查询请求参数"
+            },
+            "Order": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "type": "string"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "enum": [
+                            "ASC",
+                            "DESC"
+                        ]
+                    }
+                }
+            },
+            "InternalMessageResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "消息id",
+                        "format": "int64"
+                    },
+                    "messageCode": {
+                        "type": "string",
+                        "description": "消息编码"
+                    },
+                    "messageStatus": {
+                        "type": "string",
+                        "description": "消息状态,0草稿,1已发送,-1已撤回"
+                    },
+                    "messageRecipient": {
+                        "type": "string",
+                        "description": "消息接受人编码"
+                    },
+                    "messageRead": {
+                        "type": "string",
+                        "description": "消息是否已读，0未读，1已读"
+                    },
+                    "messageReadTime": {
+                        "type": "string",
+                        "description": "消息阅读时间",
+                        "format": "date-time"
+                    },
+                    "messageType": {
+                        "type": "string",
+                        "description": "消息类型"
+                    },
+                    "messageTitle": {
+                        "type": "string",
+                        "description": "消息标题"
+                    },
+                    "messageContent": {
+                        "type": "string",
+                        "description": "消息内容"
+                    },
+                    "messageRelationId": {
+                        "type": "string",
+                        "description": "消息关联id"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "创建时间",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "OrderItem": {
+                "type": "object",
+                "properties": {
+                    "column": {
+                        "type": "string"
+                    },
+                    "asc": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageInternalMessageResponse": {
+                "type": "object",
+                "properties": {
+                    "records": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InternalMessageResponse"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "current": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "orders": {
+                        "type": "array",
+                        "writeOnly": true,
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItem"
+                        }
+                    },
+                    "optimizeCountSql": {
+                        "$ref": "#/components/schemas/PageInternalMessageResponse"
+                    },
+                    "searchCount": {
+                        "$ref": "#/components/schemas/PageInternalMessageResponse"
+                    },
+                    "optimizeJoinOfCountSql": {
+                        "type": "boolean",
+                        "writeOnly": true
+                    },
+                    "maxLimit": {
+                        "type": "integer",
+                        "format": "int64",
+                        "writeOnly": true
+                    },
+                    "countId": {
+                        "type": "string",
+                        "writeOnly": true
+                    },
+                    "pages": {
+                        "type": "integer",
+                        "format": "int64",
+                        "deprecated": true
+                    }
+                }
+            },
+            "ResponsePageInternalMessageResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInternalMessageResponse"
+                    }
+                }
+            },
+            "InternalMessageRequest": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Order"
+                        }
+                    },
+                    "endIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "order": {
+                        "type": "array",
+                        "writeOnly": true,
+                        "items": {
+                            "$ref": "#/components/schemas/Order"
+                        }
+                    },
+                    "startPosition": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "endPosition": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "startIndex": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "startEnd": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                }
+            },
+            "InternalMessageCountResponse": {
+                "type": "object",
+                "properties": {
+                    "systemMessageCount": {
+                        "type": "integer",
+                        "description": "系统消息数量",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ResponseInternalMessageCountResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/InternalMessageCountResponse"
+                    }
+                }
+            }
+        }
+    }
+}
